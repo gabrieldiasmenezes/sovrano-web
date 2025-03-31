@@ -1,0 +1,87 @@
+.footer {
+    
+    width: 100%;
+    background-color: #6B5645; /* Cor de fundo */
+    color: #FAF3EB; /* Cor dos textos */
+    padding: 40px 0;
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    align-items: flex-start;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 250px;
+    justify-content: flex-start; /* Ajustado para alinhar os itens */
+}
+
+.heading {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #FAF3EB; /* Dourado para os títulos */
+    border-bottom: 2px solid #FAF3EB;
+    padding-bottom: 10px;
+    text-align: center; /* Texto centralizado */
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 20px;
+    font-size: 1.1rem;
+    text-align: center; /* Texto centralizado */
+}
+
+.link {
+    text-decoration: none;
+    color: #FAF3EB; /* Cor dos links */
+    transition: color 0.3s ease;
+}
+
+.link:hover {
+    color: #d4af37; /* Cor de destaque no hover */
+}
+
+.brand {
+    position: absolute;
+    z-index: 1;
+    right: 0%;
+    top: 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 250px;
+    justify-content: flex-start; /* Ajustado para alinhar os itens */
+    border: 1px solid black;
+    align-items: center;
+    text-align: center; /* Texto centralizado */
+    height: 100%;
+}
+
+.brandDescription {
+    font-size: 1rem;
+    color: #FAF3EB;
+    font-weight: lighter;
+}
+
+.footerBottom {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #4F4235; /* Cor de fundo mais escura para o rodapé inferior */
+    font-size: 0.875rem;
+    font-weight: lighter;
+    color: #FAF3EB;
+    margin-top: 40px; /* Adiciona um espaçamento maior para mover para baixo */
+}
