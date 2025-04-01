@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🍽️ Sovrano - Sistema de Reserva Online (Web)
 
-## Getting Started
+## ✨ **Descrição do Projeto**
 
-First, run the development server:
+**Sovrano** é um sistema de reservas online desenvolvido com **Next.js**, **ShadCN**, **Lucide** e **Tailwind CSS** para proporcionar uma experiência sofisticada e eficiente aos clientes de restaurantes de alto padrão. A plataforma web permite que os usuários façam reservas de forma intuitiva e elegante, garantindo facilidade e segurança em cada interação.
 
+🚧 **Este projeto ainda está em desenvolvimento.** Algumas funcionalidades podem estar incompletas ou sujeitas a mudanças.
+
+---
+
+## 🚀 **Tecnologias Utilizadas**
+
+- **Next.js** - Framework React para criação de aplicações rápidas e escaláveis.
+- **ShadCN** - Componentes acessíveis e estilizados para UI.
+- **Lucide** - Ícones modernos e flexíveis.
+- **Tailwind CSS** - Estilização rápida e responsiva.
+- **Prisma** - ORM para gerenciamento do banco de dados.
+- **NextAuth.js** - Autenticação segura.
+
+---
+
+## 📌 **Funcionalidades**
+
+### 1. **Cadastro e Autenticação Segura 🔐**
+Os usuários podem criar uma conta e acessar o sistema com total segurança, garantindo a privacidade de seus dados.
+
+- **Registro e login via e-mail e senha**
+- **Autenticação segura com NextAuth.js**
+- **Criptografia de senhas** para proteção dos dados
+
+### 2. **Sistema de Reservas Inteligente 📅**
+A plataforma permite que os clientes façam, editem e cancelem reservas de forma prática e rápida.
+
+- **Seleção da data e horário disponível**
+- **Escolha do número de pessoas**
+- **Status atualizado da reserva:** Confirmada, Pendente ou Cancelada
+- **Notificações sobre mudanças no status da reserva**
+
+### 3. **Interface Moderna e Responsiva 🎨**
+O design sofisticado e minimalista do Sovrano garante uma experiência fluida e agradável para qualquer dispositivo.
+
+- **UI responsiva e acessível** com ShadCN
+- **Ícones elegantes do Lucide** para melhor usabilidade
+- **Estilização aprimorada com Tailwind CSS**
+
+### 4. **Administração das Reservas 🏢**
+Os administradores do restaurante podem gerenciar as reservas com facilidade, visualizando a ocupação das mesas e ajustando a disponibilidade em tempo real.
+
+- **Visualização interativa do salão**
+- **Controle total das reservas e capacidade**
+- **Atualização em tempo real do status de cada reserva**
+
+---
+
+## 🎯 **Objetivo do Projeto**
+
+O **Sovrano** busca proporcionar uma experiência premium para clientes e restaurantes, oferecendo um sistema de reservas intuitivo, seguro e eficiente. A plataforma é ideal para estabelecimentos que prezam pela sofisticação e organização.
+
+---
+
+## 📦 **Como Instalar e Rodar o Projeto**
+
+### 1️⃣ **Clone o repositório**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/seu-usuario/sovrano-web.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2️⃣ **Instale as dependências**
+```bash
+cd sovrano-web
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3️⃣ **Configure as variáveis de ambiente**
+Crie um arquivo `.env.local` na raiz do projeto e adicione as seguintes configurações:
+```env
+DATABASE_URL=postgresql://usuario:senha@localhost:5432/sovrano
+NEXTAUTH_SECRET=sua_chave_secreta
+NEXTAUTH_URL=http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4️⃣ **Execute o projeto**
+```bash
+npm run dev
+```
 
-## Learn More
+O sistema estará disponível em `http://localhost:3000`.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠️ **Como Contribuir**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Faça um fork** do projeto.
+2. Crie uma **branch** com a sua feature: `git checkout -b minha-feature`.
+3. Commit suas mudanças: `git commit -m 'Adicionando nova funcionalidade'`.
+4. Faça um push para a branch: `git push origin minha-feature`.
+5. Abra um **Pull Request** e aguarde a análise.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📜 **Licença**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+---
+
+💡 **Desenvolvido por Dias** 🚀
