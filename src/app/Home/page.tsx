@@ -1,7 +1,10 @@
 import Footer from "../../components/Footer/Footer";
 import PageHeader from "../../components/PageHeader";
+import { ContactMap } from "./ComponentsHome/ContactMap";
+import { DescriptionSovrano } from "./ComponentsHome/DescriptionSovrano";
 import ImagesCarousel from "./ComponentsHome/ImagesCarousel";
-import * as Section from "./ComponentsHome/SectionsHome";
+import { IntrodutionMenu } from "./ComponentsHome/IntrodutionMenu";
+
 
 export default function HomePage() {
     const title = "Uma experiência gastronômica sofisticada para paladares exigentes.";
@@ -11,10 +14,10 @@ export default function HomePage() {
     return (
         <>
             <PageHeader title={title} subtitle={subtitle} image={image}/>
-            <Section.DescriptionSovrano/>
+            <DescriptionSovrano/>
             <ImagesCarousel/>
-            <Section.IntrodutionMenu/>
-            <Section.ContactMap/>
+            <IntrodutionMenu/>
+            <ContactMap/>
             <Footer/>
         </>
     );
