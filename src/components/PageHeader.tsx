@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Background from "./Background";
-import NavBar from "./navBar";
+import NavBar from "./navBar/navBar";
 
 interface HeaderProps {
     title: string;
