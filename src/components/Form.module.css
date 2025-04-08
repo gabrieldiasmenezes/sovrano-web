@@ -1,8 +1,9 @@
-.registrationContainer {
+.FormContainer {
     position: absolute;
     z-index: 10;
     width: 100vw;
     display: flex;
+    color: white;
     justify-content: center;
     align-items: center;
     height: 100vh;

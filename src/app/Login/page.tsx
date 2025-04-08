@@ -1,80 +1,73 @@
 "use client"
-import { useState } from "react";
-import { useRouter } from "next/router";
 import Background from "../../components/Background";
-import styles from "./Login.module.css";
+import styles from "@/components/Form.module.css";
 import Link from "next/link";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft, LogIn } from "lucide-react";
+
+// Placeholder: você pode substituir por um real action handler de login
+const initialState = {
+  values: { email: "", senha: "" },
+  errors: { email: "", senha: "" }
+};
 
 export default function LoginForm() {
-    // Estado para os dados do formulário
-    const [email, setEmail] = useState("");
-    const [senha, setSenha] = useState("");
+  return (
+    <>
+      <div className={styles.FormContainer}>
+        <form 
+          action={() => {}} // Substitua por seu action ex: loginAction
+          className="p-8 rounded-xl shadow-lg w-96 backdrop-blur-md bg-opacity-80"
+        >
+          <h2 className="text-2xl font-bold text-[#FAF3EB] mb-6 text-center">Login</h2>
 
-    // Função para enviar os dados
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        console.log({ email, senha });
-        // Aqui você pode fazer o login com o backend
-        // Se o login for bem-sucedido, redirecione para a página principal ou outra página
-        // router.push("/home");
-    };
+          {/* Email */}
+          <div className="mb-4">
+            <Input 
+              type="email" 
+              name="email" 
+              placeholder="Digite seu e-mail" 
+              defaultValue={initialState.values.email}
+              aria-invalid={!!initialState.errors.email}
+            />
+            {initialState.errors.email && (
+              <span className="text-sm text-destructive">{initialState.errors.email}</span>
+            )}
+          </div>
 
-    return (
-        <>
-            <div className={styles.loginContainer}>
-                <form 
-                    onSubmit={handleSubmit}
-                    className="p-8 rounded-xl shadow-lg w-96 backdrop-blur-md bg-opacity-80"
-                >
-                    <h2 className="text-2xl font-bold text-[#FAF3EB] mb-6 text-center">Login</h2>
+          {/* Senha */}
+          <div className="mb-4">
+            <Input 
+              type="password" 
+              name="senha" 
+              placeholder="Digite sua senha"
+              defaultValue={initialState.values.senha}
+              aria-invalid={!!initialState.errors.senha}
+            />
+            {initialState.errors.senha && (
+              <span className="text-sm text-destructive">{initialState.errors.senha}</span>
+            )}
+          </div>
 
-                    {/* E-mail */}
-                    <div className="mb-4">
-                        <label className="block text-[#FAF3EB] mb-2">E-mail</label>
-                        <input
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            className="w-full p-2 border-2 border-[#FAF3EB] rounded-lg focus:outline-none focus:ring-2 focus:ring-gold-500"
-                            placeholder="Digite seu e-mail"
-                        />
-                    </div>
+          {/* Botão */}
+          <div className="flex justify-around mt-6">
+            <Button variant="outline" className="text-secondary" asChild>
+              <Link href={"/"}><ArrowLeft /> Voltar</Link>
+            </Button>
+            <Button className="bg-primary text-secondary hover:bg-secondary hover:text-primary">
+              <LogIn /> Entrar
+            </Button>
+          </div>
 
-                    {/* Senha */}
-                    <div className="mb-4">
-                        <label className="block text-[#FAF3EB] mb-2">Senha</label>
-                        <input
-                            type="password"
-                            value={senha}
-                            onChange={(e) => setSenha(e.target.value)}
-                            className="w-full p-2 border-2 border-[#FAF3EB] rounded-lg focus:outline-none focus:ring-2 focus:ring-gold-500"
-                            placeholder="Digite sua senha"
-                        />
-                    </div>
-
-                    {/* Botão de Login */}
-                    <div className="flex justify-center items-center w-full mt-4">
-                        <button
-                            type="submit"
-                            className="bg-gold-500 text-white py-2 px-8 rounded-lg hover:bg-gold-600 transition border-1 border-[#FAF3EB] hover:bg-[#6B5645] hover:border-[#6B5645]"
-                        >
-                            Entrar
-                        </button>
-                    </div>
-
-                    {/* Link para a página de cadastro */}
-                    <div className="mt-4 text-center text-[#FAF3EB]">
-                        <span>Não tem uma </span>
-                        <Link
-                            href="/RegisterFomr" // Coloque o caminho correto para a página de cadastro
-                            className="text-gold-500 hover:text-[#6B5645]"
-                        >
-                            conta?
-                        </Link>
-                    </div>
-                </form>
-            </div>
-            <Background image={"Gallery/image1.jpg"} />
-        </>
-    );
+          {/* Link de cadastro */}
+          <div className="mt-4 text-center text-[#FAF3EB]">
+            <span>Não tem uma </span>
+            <Link href="/RegisterForm" className="text-gold-500 hover:text-[#6B5645]">conta?</Link>
+          </div>
+        </form>
+      </div>
+      <Background image={"Gallery/image1.jpg"} />
+    </>
+  );
 }

@@ -1,7 +1,7 @@
 "use client"
 import { useActionState } from "react";
 import Background from "../../components/Background";
-import styles from "./ReservationForm.module.css";
+import styles from "@/components/Form.module.css"
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -28,7 +28,7 @@ export default function ReservationForm() {
 
     return (
         <>
-            <div className={styles.reservationContainer}>
+            <div className={styles.FormContainer}>
                 <form
                     action={formAction}
                     className="p-8 rounded-xl shadow-lg w-96 backdrop-blur-md bg-opacity-80"
@@ -86,7 +86,7 @@ export default function ReservationForm() {
                     </div>
                     
                     <div className="flex justify-around mt-6">
-                        <Button variant="outline" asChild>
+                        <Button variant="outline" className="text-secondary" asChild>
                             <Link href={"/Reservation"}>
                                 <ArrowLeft />
                                 Cancelar

@@ -1,108 +1,120 @@
 "use client"
-import { useState } from "react";
 import Background from "../../components/Background";
-import styles from "./Register.module.css"
+import styles from "@/components/Form.module.css";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Check, ArrowLeft } from "lucide-react";
+
+// Placeholder de estado inicial
+const initialState = {
+  values: {
+    nome: "",
+    email: "",
+    senha: "",
+    confirmarSenha: "",
+    telefone: ""
+  },
+  errors: {
+    nome: "",
+    email: "",
+    senha: "",
+    confirmarSenha: "",
+    telefone: ""
+  }
+};
 
 export default function RegistrationForm() {
-    // Estado para os dados do formulário
-    const [nome, setNome] = useState("");
-    const [email, setEmail] = useState("");
-    const [senha, setSenha] = useState("");
-    const [confirmarSenha, setConfirmarSenha] = useState("");
-    const [telefone, setTelefone] = useState("");
+  return (
+    <>
+      <div className={styles.FormContainer}>
+        <form
+          action={() => {}} // Substitua por seu action ex: registerUser
+          className="p-8 rounded-xl shadow-lg w-96 backdrop-blur-md bg-opacity-80"
+        >
+          <h2 className="text-2xl font-bold text-[#FAF3EB] mb-6 text-center">Cadastro</h2>
 
-    // Função para enviar os dados
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        if (senha !== confirmarSenha) {
-            alert("As senhas não coincidem!");
-            return;
-        }
-        console.log({ nome, email, senha, telefone });
-        // Aqui você pode enviar os dados para o backend
-    };
+          {/* Nome */}
+          <div className="mb-4">
+            <Input
+              name="nome"
+              type="text"
+              placeholder="Digite seu nome"
+              defaultValue={initialState.values.nome}
+              aria-invalid={!!initialState.errors.nome}
+            />
+            {initialState.errors.nome && (
+              <span className="text-sm text-destructive">{initialState.errors.nome}</span>
+            )}
+          </div>
 
-    return (
-        <>
-            <div className={styles.registrationContainer}>
-                <form 
-                    onSubmit={handleSubmit}
-                    className="p-8 rounded-xl shadow-lg w-96 backdrop-blur-md bg-opacity-80"
-                >
-                    <h2 className="text-2xl font-bold text-[#FAF3EB] mb-6 text-center">Cadastro</h2>
+          {/* Email */}
+          <div className="mb-4">
+            <Input
+              name="email"
+              type="email"
+              placeholder="Digite seu e-mail"
+              defaultValue={initialState.values.email}
+              aria-invalid={!!initialState.errors.email}
+            />
+            {initialState.errors.email && (
+              <span className="text-sm text-destructive">{initialState.errors.email}</span>
+            )}
+          </div>
 
-                    {/* Nome */}
-                    <div className="mb-4">
-                        <label className="block text-[#FAF3EB] mb-2">Nome</label>
-                        <input
-                            type="text"
-                            value={nome}
-                            onChange={(e) => setNome(e.target.value)}
-                            className="w-full p-2 border-2 border-[#FAF3EB] rounded-lg focus:outline-none focus:ring-2 focus:ring-gold-500"
-                            placeholder="Digite seu nome"
-                        />
-                    </div>
+          {/* Senha */}
+          <div className="mb-4">
+            <Input
+              name="senha"
+              type="password"
+              placeholder="Digite sua senha"
+              defaultValue={initialState.values.senha}
+              aria-invalid={!!initialState.errors.senha}
+            />
+            {initialState.errors.senha && (
+              <span className="text-sm text-destructive">{initialState.errors.senha}</span>
+            )}
+          </div>
 
-                    {/* E-mail */}
-                    <div className="mb-4">
-                        <label className="block text-[#FAF3EB] mb-2">E-mail</label>
-                        <input
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            className="w-full p-2 border-2 border-[#FAF3EB] rounded-lg focus:outline-none focus:ring-2 focus:ring-gold-500"
-                            placeholder="Digite seu e-mail"
-                        />
-                    </div>
+          {/* Confirmar senha */}
+          <div className="mb-4">
+            <Input
+              name="confirmarSenha"
+              type="password"
+              placeholder="Confirme sua senha"
+              defaultValue={initialState.values.confirmarSenha}
+              aria-invalid={!!initialState.errors.confirmarSenha}
+            />
+            {initialState.errors.confirmarSenha && (
+              <span className="text-sm text-destructive">{initialState.errors.confirmarSenha}</span>
+            )}
+          </div>
 
-                    {/* Senha */}
-                    <div className="mb-4">
-                        <label className="block text-[#FAF3EB] mb-2">Senha</label>
-                        <input
-                            type="password"
-                            value={senha}
-                            onChange={(e) => setSenha(e.target.value)}
-                            className="w-full p-2 border-2 border-[#FAF3EB] rounded-lg focus:outline-none focus:ring-2 focus:ring-gold-500"
-                            placeholder="Digite sua senha"
-                        />
-                    </div>
+          {/* Telefone */}
+          <div className="mb-4">
+            <Input
+              name="telefone"
+              type="tel"
+              placeholder="Digite seu telefone"
+              defaultValue={initialState.values.telefone}
+              aria-invalid={!!initialState.errors.telefone}
+            />
+            {initialState.errors.telefone && (
+              <span className="text-sm text-destructive">{initialState.errors.telefone}</span>
+            )}
+          </div>
 
-                    {/* Confirmar Senha */}
-                    <div className="mb-4">
-                        <label className="block text-[#FAF3EB] mb-2">Confirmar Senha</label>
-                        <input
-                            type="password"
-                            value={confirmarSenha}
-                            onChange={(e) => setConfirmarSenha(e.target.value)}
-                            className="w-full p-2 border-2 border-[#FAF3EB] rounded-lg focus:outline-none focus:ring-2 focus:ring-gold-500"
-                            placeholder="Confirme sua senha"
-                        />
-                    </div>
-
-                    {/* Telefone */}
-                    <div className="mb-4">
-                        <label className="block text-[#FAF3EB] mb-2">Telefone</label>
-                        <input
-                            type="tel"
-                            value={telefone}
-                            onChange={(e) => setTelefone(e.target.value)}
-                            className="w-full p-2 border-2 border-[#FAF3EB] rounded-lg focus:outline-none focus:ring-2 focus:ring-gold-500"
-                            placeholder="Digite seu telefone"
-                        />
-                    </div>
-
-                    {/* Botão de Enviar */}
-                    <div className="flex justify-center items-center w-full mt-4">
-                        <button
-                            type="submit"
-                            className="bg-gold-500 text-white py-2 px-8 rounded-lg hover:bg-gold-600 transition border-1 border-[#FAF3EB] hover:bg-[#6B5645] hover:border-[#6B5645]"
-                        >
-                            Confirmar Cadastro
-                        </button>
-                    </div>
-                </form>
-            </div>
-            <Background image={"Gallery/image1.jpg"} />
-        </>
-    );
+          {/* Botões */}
+          <div className="flex justify-around mt-6">
+            <Button variant="outline" className="text-secondary" asChild>
+              <a href="/"><ArrowLeft /> Voltar</a>
+            </Button>
+            <Button className="bg-primary text-secondary hover:bg-secondary hover:text-primary">
+              <Check /> Cadastrar
+            </Button>
+          </div>
+        </form>
+      </div>
+      <Background image={"Gallery/image1.jpg"} />
+    </>
+  );
 }
