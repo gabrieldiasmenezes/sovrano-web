@@ -3,8 +3,9 @@ import { redirect } from "next/navigation";
 const API_URL = "http://localhost:8080/reservations";
 
 export async function getReservations() {
-    const response = await fetch(API_URL);
-    return await response.json();
+    const response = await fetch(`${API_URL}?page=1&size=3`);
+    const json=await response.json();
+    return json.content;
 }
 
 export async function createReservation(initialState: any, formData: FormData) {
