@@ -1,73 +1,84 @@
-"use client"
+"use client";
 import Background from "../../components/Background";
 import styles from "@/components/Form.module.css";
-import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, LogIn } from "lucide-react";
+import { useActionState } from "react";
+import { loginAccount } from "@/actions/account-actions";
+import { Check, ArrowLeft } from "lucide-react";
+import Link from "next/link";
 
-// Placeholder: você pode substituir por um real action handler de login
 const initialState = {
-  values: { email: "", senha: "" },
-  errors: { email: "", senha: "" }
+  values: {
+    email: "",
+    password: "",
+  },
+  errors: {
+    email: "",
+    password: "",
+  }
 };
 
 export default function LoginForm() {
+  const [state, formAction, pending] = useActionState(loginAccount, initialState);
+
   return (
     <>
       <div className={styles.FormContainer}>
-        <form 
-          action={() => {}} // Substitua por seu action ex: loginAction
+        <form
+          action={formAction}
           className="p-8 rounded-xl shadow-lg w-96 backdrop-blur-md bg-opacity-80"
         >
           <h2 className="text-2xl font-bold text-[#FAF3EB] mb-6 text-center">Login</h2>
 
           {/* Email */}
           <div className="mb-4">
-            <Input 
-              type="email" 
-              name="email" 
-              placeholder="Digite seu e-mail" 
-              defaultValue={initialState.values.email}
-              aria-invalid={!!initialState.errors.email}
+            <Input
+              name="email"
+              type="email"
+              placeholder="Digite seu e-mail"
+              defaultValue={state.values.email}
+              aria-invalid={!!state?.errors?.email}
             />
-            {initialState.errors.email && (
-              <span className="text-sm text-destructive">{initialState.errors.email}</span>
+            {state?.errors?.email && (
+              <span className="text-sm text-destructive">{state.errors.email}</span>
             )}
           </div>
 
-          {/* Senha */}
+          {/* password */}
           <div className="mb-4">
-            <Input 
-              type="password" 
-              name="senha" 
+            <Input
+              name="password"
+              type="password"
               placeholder="Digite sua senha"
-              defaultValue={initialState.values.senha}
-              aria-invalid={!!initialState.errors.senha}
+              defaultValue={state.values.password}
+              aria-invalid={!!state?.errors?.password}
             />
-            {initialState.errors.senha && (
-              <span className="text-sm text-destructive">{initialState.errors.senha}</span>
+            {state?.errors?.password && (
+              <span className="text-sm text-destructive">{state.errors.password}</span>
             )}
           </div>
 
-          {/* Botão */}
+          {/* Botões */}
           <div className="flex justify-around mt-6">
             <Button variant="outline" className="text-secondary" asChild>
-              <Link href={"/"}><ArrowLeft /> Voltar</Link>
+              <a href="/"><ArrowLeft /> Voltar</a>
             </Button>
             <Button className="bg-primary text-secondary hover:bg-secondary hover:text-primary">
-              <LogIn /> Entrar
+              <Check /> Entrar
             </Button>
           </div>
-
-          {/* Link de cadastro */}
-          <div className="mt-4 text-center text-[#FAF3EB]">
-            <span>Não tem uma </span>
-            <Link href="/RegisterForm" className="text-gold-500 hover:text-[#6B5645]">conta?</Link>
+          <div className="mt-4 text-center">
+            <p className="text-sm text-[#FAF3EB]">
+              Não tem uma conta?{" "}
+              <Link href="/RegisterForm" className="text-primary hover:text-secondary">
+                Cadastre-se
+              </Link>
+            </p>
           </div>
         </form>
       </div>
-      <Background image={"Gallery/image1.jpg"} />
+      <Background image={"Gallery/image2.jpg"} />
     </>
   );
 }

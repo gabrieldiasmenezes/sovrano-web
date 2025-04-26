@@ -4,46 +4,46 @@ import styles from "@/components/Form.module.css";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowLeft } from "lucide-react";
+import { useActionState } from "react";
+import { createAccount } from "@/actions/account-actions";
 
-// Placeholder de estado inicial
+
 const initialState = {
   values: {
-    nome: "",
+    name: "",
     email: "",
-    senha: "",
-    confirmarSenha: "",
-    telefone: ""
+    password: "",
+    phone: ""
   },
   errors: {
-    nome: "",
+    name: "",
     email: "",
-    senha: "",
-    confirmarSenha: "",
-    telefone: ""
+    password: "",
+    phone: ""
   }
 };
 
 export default function RegistrationForm() {
+  const [state, formAction, penden] = useActionState(createAccount, initialState);
   return (
     <>
       <div className={styles.FormContainer}>
         <form
-          action={() => {}} // Substitua por seu action ex: registerUser
+          action={formAction} 
           className="p-8 rounded-xl shadow-lg w-96 backdrop-blur-md bg-opacity-80"
         >
           <h2 className="text-2xl font-bold text-[#FAF3EB] mb-6 text-center">Cadastro</h2>
 
-          {/* Nome */}
           <div className="mb-4">
             <Input
-              name="nome"
+              name="name"
               type="text"
-              placeholder="Digite seu nome"
-              defaultValue={initialState.values.nome}
-              aria-invalid={!!initialState.errors.nome}
+              placeholder="Digite seu name"
+              defaultValue={state.values.name}
+              aria-invalid={!!state?.errors.name}
             />
-            {initialState.errors.nome && (
-              <span className="text-sm text-destructive">{initialState.errors.nome}</span>
+            {state.errors.name && (
+              <span className="text-sm text-destructive">{state.errors.name}</span>
             )}
           </div>
 
@@ -53,53 +53,39 @@ export default function RegistrationForm() {
               name="email"
               type="email"
               placeholder="Digite seu e-mail"
-              defaultValue={initialState.values.email}
-              aria-invalid={!!initialState.errors.email}
+              defaultValue={state.values.email}
+              aria-invalid={!!state?.errors.email}
             />
-            {initialState.errors.email && (
-              <span className="text-sm text-destructive">{initialState.errors.email}</span>
+            {state.errors.email && (
+              <span className="text-sm text-destructive">{state.errors.email}</span>
             )}
           </div>
 
-          {/* Senha */}
+          {/* password */}
           <div className="mb-4">
             <Input
-              name="senha"
+              name="password"
               type="password"
-              placeholder="Digite sua senha"
-              defaultValue={initialState.values.senha}
-              aria-invalid={!!initialState.errors.senha}
+              placeholder="Digite sua password"
+              defaultValue={state.values.password}
+              aria-invalid={!!state.errors.password}
             />
-            {initialState.errors.senha && (
-              <span className="text-sm text-destructive">{initialState.errors.senha}</span>
+            {state.errors.password && (
+              <span className="text-sm text-destructive">{state.errors.password}</span>
             )}
           </div>
 
-          {/* Confirmar senha */}
+          {/* phone */}
           <div className="mb-4">
             <Input
-              name="confirmarSenha"
-              type="password"
-              placeholder="Confirme sua senha"
-              defaultValue={initialState.values.confirmarSenha}
-              aria-invalid={!!initialState.errors.confirmarSenha}
-            />
-            {initialState.errors.confirmarSenha && (
-              <span className="text-sm text-destructive">{initialState.errors.confirmarSenha}</span>
-            )}
-          </div>
-
-          {/* Telefone */}
-          <div className="mb-4">
-            <Input
-              name="telefone"
+              name="phone"
               type="tel"
-              placeholder="Digite seu telefone"
-              defaultValue={initialState.values.telefone}
-              aria-invalid={!!initialState.errors.telefone}
+              placeholder="Digite seu phone"
+              defaultValue={state.values.phone}
+              aria-invalid={!!state.errors.phone}
             />
-            {initialState.errors.telefone && (
-              <span className="text-sm text-destructive">{initialState.errors.telefone}</span>
+            {state.errors.phone && (
+              <span className="text-sm text-destructive">{state.errors.phone}</span>
             )}
           </div>
 

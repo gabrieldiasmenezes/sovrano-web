@@ -13,7 +13,7 @@ const initialState = {
         name: "",
         date: "",
         time: "",
-        qnt: ""  // Mantivemos "qnt" conforme você deseja
+        qnt: ""  
     },
     errors: {
         name: "",
@@ -25,7 +25,6 @@ const initialState = {
 
 export default function ReservationForm() {
     const [state, formAction, penden] = useActionState(createReservation, initialState);
-
     return (
         <>
             <div className={styles.FormContainer}>

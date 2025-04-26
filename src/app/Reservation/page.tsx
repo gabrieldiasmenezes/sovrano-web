@@ -1,6 +1,6 @@
+
 import { Reservation } from "../../../type";
 import NavBar from "../../components/navBar/navBar";
-import Background from "../../components/Background";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { CircleAlert } from "lucide-react";
 import Link from "next/link";
@@ -13,8 +13,6 @@ export default async function ReservationPage() {
 
   return (
     <div className="relative min-h-screen flex flex-col">
-      {/* Background que cresce com a página */}
-      <Background image="Backgrounds/backgroundHome.jpg" />
 
       {/* Conteúdo principal */}
       <div className="relative z-20 flex flex-col flex-grow px-6 pt-32 pb-32 max-w-7xl mx-auto w-full">
@@ -49,7 +47,10 @@ export default async function ReservationPage() {
           Fazer Reserva
         </Link>
       </div>
+      <div className="fixed top-0 left-0 z-1 size-full bg-black opacity-60"></div>
+      <img className="fixed top-0 left-0 z-0 size-full object-cover" src="Backgrounds/backgroundHome.jpg" alt="Background da página inicial" />
     </div>
   );
 }
+
 
